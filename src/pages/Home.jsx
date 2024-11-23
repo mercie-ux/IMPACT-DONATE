@@ -1,169 +1,178 @@
 import React from "react";
 import {
-	Layout,
-	Menu,
-	Button,
-	Typography,
-	Image,
-	Space,
-	Row,
-	Col,
-	Card,
+    Layout,
+    Typography,
+    Button,
+    Image,
+    Row,
+    Col,
+    Card,
 } from "antd";
 import { useNavigate } from "react-router-dom";
 
-const { Header, Content, Footer } = Layout;
+const { Content } = Layout;
 const { Title, Paragraph } = Typography;
 
 function Home() {
-	const navigate = useNavigate();
+    const navigate = useNavigate();
 
-	const handleMenuClick = (e) => {
-		console.log(e);
+    return (
+        <Layout style={{ minHeight: "100vh", backgroundColor: "#f5f5f5" }}>
+            <Content
+                style={{
+                    padding: "50px 20px",
+                    backgroundColor: "#f5f5f5",
+                }}
+            >
+                <div
+                    style={{
+                        maxWidth: "1200px",
+                        margin: "0 auto",
+                        textAlign: "center",
+                    }}
+                >
+                    {/* Hero Section */}
+                    <Row
+                        gutter={[16, 16]}
+                        align="middle"
+                        style={{
+                            marginBottom: "40px",
+                            backgroundColor: "#ffffff",
+                            padding: "20px",
+                            borderRadius: "8px",
+                            boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
+                        }}
+                    >
+                        <Col xs={24} md={12}>
+                            <Title level={1} style={{ color: "#2A2A2A" }}>
+                                Empowering African Women Developers
+                            </Title>
+                            <Paragraph
+                                style={{
+                                    fontSize: "18px",
+                                    color: "#575757",
+                                    lineHeight: "1.8",
+                                }}
+                            >
+                                Join us in supporting talented African women
+                                developers as they bring groundbreaking ideas
+                                to life. Together, we can drive innovation and
+                                create opportunities for women in tech across
+                                Africa.
+                            </Paragraph>
+                            <Button
+                                onClick={() => navigate("/charities")}
+                                type="primary"
+                                size="large"
+                                style={{
+                                    backgroundColor: "#64B687", // Primary green
+                                    border: "none",
+                                    color: "#FFFFFF",
+                                    marginTop: "20px",
+                                }}
+                            >
+                                Explore Projects
+                            </Button>
+                        </Col>
+                        <Col xs={24} md={12}>
+                            <Image
+                                width={240}
+                                src="src/assets/home-page-pic.png"
+                                alt="African Women Developers"
+                                preview={false}
+                                style={{
+                                    borderRadius: "8px",
+                                    boxShadow: "0 4px 12px rgba(0, 0, 0, 0.2)",
+                                    border: "4px solid #64B687",
+                                }}
+                            />
+                        </Col>
+                    </Row>
 
-		if (e.key === "home") {
-			navigate(`/`, {
-				// state: { module: record },
-			});
-		} else if (e.key === "charities") {
-			navigate(`/charities`, {
-				// state: { record },
-			});
-		} else if (e.key === "donation") {
-			navigate(`/donation`, {
-				// state: { record },
-			});
-		}
-	};
-	return (
-		<Layout style={{ minHeight: "100vh", backgroundColor: "#f5f5f5" }}>
-			{/* Header with Logo and Navbar */}
+                    {/* Mission Section */}
+                    <Row
+                        gutter={[16, 16]}
+                        style={{ marginTop: "40px", marginBottom: "40px" }}
+                    >
+                        <Col xs={24}>
+                            <Title level={2} style={{ color: "#2A2A2A" }}>
+                                Our Mission
+                            </Title>
+                            <Paragraph
+                                style={{
+                                    fontSize: "16px",
+                                    color: "#575757",
+                                    lineHeight: "1.8",
+                                }}
+                            >
+                                We believe in creating opportunities for African
+                                women developers by providing the resources they
+                                need to succeed. From funding innovative
+                                projects to supporting education and tools, your
+                                contributions make a lasting impact.
+                            </Paragraph>
+                        </Col>
+                    </Row>
 
-			{/* Main Content */}
-			<Content
-				style={{ padding: "50px 20px", backgroundColor: "#f5f5f5" }}
-			>
-				<div
-					style={{
-						maxWidth: "1200px",
-						margin: "0 auto",
-						textAlign: "center",
-					}}
-				>
-					{/* Hero Section */}
-					<Row
-						gutter={[16, 16]}
-						align="middle"
-						style={{ marginBottom: "40px" }}
-					>
-						<Col xs={24} md={12}>
-							<Title level={1} style={{ color: "#002B36" }}>
-								Empowering Developers Worldwide
-							</Title>
-							<Paragraph
-								style={{ fontSize: "18px", color: "#334E58" }}
-							>
-								Your Bitcoin donations help developers fuel
-								innovation and creativity. Together, we are
-								shaping the future of technology.
-							</Paragraph>
-							<Button
-								 onClick={() => navigate("/charities")} 
-								type="primary"
-								size="large"
-								style={{
-									backgroundColor: "#d4f674",
-									border: "none",
-									color: "#002B36",
-								}}
-							>
-								Donate Now
-							</Button>
-						</Col>
-						<Col xs={24} md={12}>
-							<Image
-								width={240}
-								src="src/assets/home-page-pic.png"
-								alt="Innovation Illustration"
-								preview={false}
-								style={{ borderRadius: "8px" }}
-							/>
-						</Col>
-					</Row>
-
-					{/* Mission Section */}
-					<Row gutter={[16, 16]} style={{ marginBottom: "40px" }}>
-						<Col xs={24}>
-							<Title level={2} style={{ color: "#002B36" }}>
-								Our Mission
-							</Title>
-							<Paragraph
-								style={{ fontSize: "16px", color: "#334E58" }}
-							>
-								We support talented developers by providing the
-								resources they need to bring their ideas to
-								life. Your contributions fuel projects, tools,
-								and innovations that have the power to change
-								the world.
-							</Paragraph>
-						</Col>
-					</Row>
-
-					{/* Highlights Section */}
-					<Row gutter={[16, 16]}>
-						<Col xs={24} md={8}>
-							<Card
-								title="Innovative Projects"
-								bordered={false}
-								style={{
-									backgroundColor: "#d4f674",
-									color: "#002B36",
-								}}
-							>
-								<Paragraph>
-									Help fund groundbreaking projects that solve
-									real-world problems using cutting-edge
-									technology.
-								</Paragraph>
-							</Card>
-						</Col>
-						<Col xs={24} md={8}>
-							<Card
-								title="Empowering Developers"
-								bordered={false}
-								style={{
-									backgroundColor: "#d4f674",
-									color: "#002B36",
-								}}
-							>
-								<Paragraph>
-									Your donations give developers the resources
-									they need to succeed, from tools to
-									education.
-								</Paragraph>
-							</Card>
-						</Col>
-						<Col xs={24} md={8}>
-							<Card
-								title="Shaping the Future"
-								bordered={false}
-								style={{
-									backgroundColor: "#d4f674",
-									color: "#002B36",
-								}}
-							>
-								<Paragraph>
-									Join a community that’s committed to driving
-									innovation and making a lasting impact on
-									the world.
-								</Paragraph>
-							</Card>
-						</Col>
-					</Row>
-				</div>
-			</Content>
-		</Layout>
-	);
+                    {/* Highlights Section */}
+                    <Row gutter={[16, 16]}>
+                        <Col xs={24} md={8}>
+                            <Card
+                                title="Innovative Projects"
+                                bordered={false}
+                                style={{
+                                    backgroundColor: "#64B687",
+                                    color: "#FFFFFF",
+                                    borderRadius: "8px",
+                                    textAlign: "center",
+                                }}
+                            >
+                                <Paragraph style={{ color: "#FFFFFF" }}>
+                                    Support initiatives by African women that
+                                    use technology to solve real-world problems.
+                                </Paragraph>
+                            </Card>
+                        </Col>
+                        <Col xs={24} md={8}>
+                            <Card
+                                title="Empowering Women"
+                                bordered={false}
+                                style={{
+                                    backgroundColor: "#FF7043", // Coral accent
+                                    color: "#FFFFFF",
+                                    borderRadius: "8px",
+                                    textAlign: "center",
+                                }}
+                            >
+                                <Paragraph style={{ color: "#FFFFFF" }}>
+                                    Your contributions help African women access
+                                    education, tools, and mentorship in tech.
+                                </Paragraph>
+                            </Card>
+                        </Col>
+                        <Col xs={24} md={8}>
+                            <Card
+                                title="Shaping the Future"
+                                bordered={false}
+                                style={{
+                                    backgroundColor: "#64B687",
+                                    color: "#FFFFFF",
+                                    borderRadius: "8px",
+                                    textAlign: "center",
+                                }}
+                            >
+                                <Paragraph style={{ color: "#FFFFFF" }}>
+                                    Join a movement that’s driving innovation
+                                    and changing the face of technology in
+                                    Africa.
+                                </Paragraph>
+                            </Card>
+                        </Col>
+                    </Row>
+                </div>
+            </Content>
+        </Layout>
+    );
 }
 
 export default Home;
