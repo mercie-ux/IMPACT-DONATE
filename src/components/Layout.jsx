@@ -42,8 +42,8 @@ const Layout = () => {
             src="/src/assets/impact-donate-logo.png"
             alt="Logo"
             style={{
-              width: "50px",
-              height: "50px",
+              width: "70px",
+              height: "70px",
               borderRadius: "50%",
               objectFit: "cover",
               marginRight: "15px",
@@ -52,7 +52,7 @@ const Layout = () => {
           <h1
             style={{
               color: "#ffffff",
-              fontSize: "28px",
+              fontSize: "24px",
               fontWeight: "900",
               fontFamily: "'Poppins', sans-serif",
               margin: 0,
@@ -60,7 +60,7 @@ const Layout = () => {
               textTransform: "uppercase",
             }}
           >
-            Impact<span style={{ color: "#d4f674" }}>Donate</span>
+            Impact<span style={{ color: "#64B687" }}>Donate</span>
           </h1>
         </div>
 
@@ -69,7 +69,7 @@ const Layout = () => {
           onClick={handleMenuClick}
           theme="dark"
           mode="horizontal"
-          selectedKeys={[selectedKey]} // Dynamically highlights the current page
+          selectedKeys={[selectedKey]}
           style={{
             flex: 1,
             justifyContent: "flex-end",
@@ -85,6 +85,8 @@ const Layout = () => {
               style: {
                 padding: "8px 16px",
                 borderRadius: "20px",
+                backgroundColor: selectedKey === "home" ? "#64B687" : "transparent",
+                color: selectedKey === "home" ? "#ffffff" : "#d4f674",
                 transition: "background-color 0.3s ease",
               },
             },
@@ -94,6 +96,8 @@ const Layout = () => {
               style: {
                 padding: "8px 16px",
                 borderRadius: "20px",
+                backgroundColor: selectedKey === "charities" ? "#64B687" : "transparent",
+                color: selectedKey === "charities" ? "#ffffff" : "#d4f674",
                 transition: "background-color 0.3s ease",
               },
             },
@@ -103,6 +107,8 @@ const Layout = () => {
               style: {
                 padding: "8px 16px",
                 borderRadius: "20px",
+                backgroundColor: selectedKey === "donation" ? "#64B687" : "transparent",
+                color: selectedKey === "donation" ? "#ffffff" : "#d4f674",
                 transition: "background-color 0.3s ease",
               },
             },
@@ -122,10 +128,15 @@ const Layout = () => {
           backgroundColor: "#002B36",
           color: "#fff",
           padding: "20px",
+          borderTop: "4px solid #64B687",
         }}
       >
-        Impact Donate ©{new Date().getFullYear()} - Empowering Developers
-        Worldwide
+        <p style={{ margin: 0, fontWeight: 600 }}>
+          Empowering <span style={{ color: "#64B687" }}>African Women Developers</span> to Innovate, Lead, and Thrive.
+        </p>
+        <p style={{ fontSize: "14px", margin: 0 }}>
+          © {new Date().getFullYear()} African Developers - Building a brighter tech future together.
+        </p>
       </Footer>
     </AntdLayout>
   );

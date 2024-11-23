@@ -1,82 +1,132 @@
-
-import React from 'react';
-import { Form, Input, Button, Typography, Layout, Menu, Image } from 'antd';
+import React, { useState } from "react";
+import { Form, Input, Button, Typography, Layout, Space, message } from "antd";
+import { useLocation, useNavigate } from "react-router-dom";
+import { FiClipboard, FiCheckCircle } from "react-icons/fi";
 
 const { Title, Paragraph } = Typography;
-const { Header, Content, Footer } = Layout;
+const { Content } = Layout;
 
 const Donation = () => {
-  const onFinish = (values) => {
-    console.log('Form values:', values);
-  };
-  const handleMenuClick = (e) => {
-    console.log(e);
+  const { state } = useLocation();
+  const navigate = useNavigate();
+  const [invoice, setInvoice] = useState(null);
+  const [paymentStatus, setPaymentStatus] = useState(false);
+  const [invoiceCopied, setInvoiceCopied] = useState(false);
 
-    if (e.key === "home") {
-        navigate(`/`, {
-            // state: { module: record },
-        });
-    } else if (e.key === "charities") {
-        navigate(`/charities`, {
-            // state: { record },
-        });
-    } else if (e.key === "donation") {
-        navigate(`/donation`, {
-            // state: { record },
-        });
-    }
-};
+  const onFinish = (values) => {
+    // Simulate invoice generation
+    setInvoice("LN-INVOICE-1234567890ABCDEF");
+    message.success("Invoice generated. Copy and paste it into your wallet to make the payment.");
+  };
+
+  const handleCopyInvoice = () => {
+    navigator.clipboard.writeText(invoice);
+    setInvoiceCopied(true);
+    message.success("Invoice copied to clipboard!");
+  };
+
+  const handleCheckPayment = () => {
+    // Simulate payment verification (this would involve backend logic with LND integration)
+    setPaymentStatus(true);
+    message.success("Payment successful! Thank you for your contribution.");
+  };
 
   return (
-    <>
     <Layout>
-    
-    <div style={{ padding: '50px', backgroundColor: '#f8f8f8' }}>
-      <Title level={2} style={{ textAlign: 'center', color: '#4a4a4a' }}>
-        Donate Now
-      </Title>
-      <Paragraph style={{ textAlign: 'center', color: '#6c757d' }}>
-        Fill in your details below to support our developers.
-      </Paragraph>
-      <div style={{ maxWidth: '400px', margin: '0 auto', padding: '20px', background: '#ffffff', borderRadius: '8px', boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)' }}>
-        <Form layout="vertical" onFinish={onFinish}>
-          <Form.Item
-            label="Name"
-            name="name"
-            rules={[{ required: true, message: 'Please enter your name' }]}
-          >
-            <Input placeholder="Your Name" />
-          </Form.Item>
-          <Form.Item
-            label="Email"
-            name="email"
-            rules={[
-              { required: true, message: 'Please enter your email' },
-              { type: 'email', message: 'Please enter a valid email' },
-            ]}
-          >
-            <Input placeholder="Your Email" />
-          </Form.Item>
-          <Form.Item
-            label="Amount (BTC)"
-            name="amount"
-            rules={[{ required: true, message: 'Please enter the amount in BTC' }]}
-          >
-            <Input type="number" placeholder="e.g., 0.01" />
-          </Form.Item>
-          <Button type="primary" htmlType="submit" style={{ backgroundColor: '#d4f674', borderColor: '#d4f674', width: '100%' }}>
-            Donate
-          </Button>
-        </Form>
-      </div>
-    </div>
-    
-</Layout>
-    </>
-    
+      <Content style={{ padding: "50px 20px", backgroundColor: "#f8f8f8" }}>
+        <Title level={2} style={{ textAlign: "center", color: "#4a4a4a", fontWeight: "bold" }}>
+          Support {state?.name}
+        </Title>
+        <Paragraph style={{ textAlign: "center", color: "#6c757d", fontStyle: "italic" }}>
+          Fill in your details below to contribute to this impactful project.
+        </Paragraph>
 
+        <div
+          style={{
+            maxWidth: "600px",
+            margin: "0 auto",
+            padding: "20px",
+            background: "#ffffff",
+            borderRadius: "8px",
+            boxShadow: "0 6px 15px rgba(0, 0, 0, 0.1)",
+          }}
+        >
+          <Form layout="vertical" onFinish={onFinish}>
+            <Form.Item
+              label="Amount (sats)"
+              name="amount"
+              rules={[{ required: true, message: "Please enter the donation amount" }]}
+            >
+              <Input type="number" placeholder="e.g., 0.01" />
+            </Form.Item>
 
-    
+            <Form.Item
+              label="Description (optional)"
+              name="description"
+            >
+              <Input.TextArea placeholder="Write a message (optional)" />
+            </Form.Item>
+
+            <Button
+              type="primary"
+              htmlType="submit"
+              style={{
+                backgroundColor: "#d4f674",
+                borderColor: "#d4f674",
+                color: "#232155",
+                width: "100%",
+                fontWeight: "bold",
+              }}
+            >
+              Donate
+            </Button>
+          </Form>
+
+          {invoice && (
+            <div style={{ marginTop: "20px" }}>
+              <Space direction="vertical" style={{ width: "100%" }}>
+                <Paragraph strong>Invoice:</Paragraph>
+                <Paragraph style={{ backgroundColor: "#f0f0f0", padding: "10px", borderRadius: "4px" }}>
+                  {invoice}
+                </Paragraph>
+                <Button
+                  icon={<FiClipboard />}
+                  onClick={handleCopyInvoice}
+                  style={{ width: "100%" }}
+                  type="default"
+                >
+                  {invoiceCopied ? "Invoice Copied!" : "Copy Invoice"}
+                </Button>
+              </Space>
+
+              {!paymentStatus && (
+                <Button
+                  onClick={handleCheckPayment}
+                  type="primary"
+                  icon={<FiCheckCircle />}
+                  style={{ width: "100%", marginTop: "20px", backgroundColor: "#232155" }}
+                >
+                  Check Payment
+                </Button>
+              )}
+
+              {paymentStatus && (
+                <div style={{ marginTop: "20px", textAlign: "center" }}>
+                  <Paragraph strong>Your payment has been confirmed!</Paragraph>
+                  <Button
+                    type="link"
+                    onClick={() => navigate("/transaction")}
+                    style={{ color: "#d4f674" }}
+                  >
+                    View Transaction
+                  </Button>
+                </div>
+              )}
+            </div>
+          )}
+        </div>
+      </Content>
+    </Layout>
   );
 };
 
