@@ -24,16 +24,17 @@ app.post("/generate-invoice", (req, res) => {
       memo: `Donation by ${name}`, // Description of the donation
     };
   
-    client.addInvoice(request, (err, response) => {
-      if (err) {
-        console.error("Error creating invoice:", err);
-        return res.status(500).json({ error: "Failed to create invoice" });
-      }
-      res.json({
-        payment_request: response.payment_request, // LN invoice
-        r_hash: response.r_hash, // Payment hash
-      });
-    });
+    // client.addInvoice(request, (err, response) => {
+
+    //   if (err) {
+    //     console.error("Error creating invoice:", err);
+    //     return res.status(500).json({ error: "Failed to create invoice" });
+    //   }
+    //   res.json({
+    //     payment_request: response.payment_request, // LN invoice
+    //     r_hash: response.r_hash, // Payment hash
+    //   });
+    // });
   });
 
   

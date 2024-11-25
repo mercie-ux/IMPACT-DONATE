@@ -9,8 +9,8 @@ function TransactionHistory() {
   ];
 
   const data = [
-    { key: 1, date: '2024-01-01', amount: '100', charity: 'Charity A' },
-    { key: 2, date: '2024-02-01', amount: '150', charity: 'Charity B' },
+    { key: 1, date: '2024-11-23', amount: '500', charity: 'Open-source AI Model for Education' },
+    { key: 2, date: '2024-11-23', amount: '150', charity: 'Decentralized Storage for Developers' },
   ];
 
   return (

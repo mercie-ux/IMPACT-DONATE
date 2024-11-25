@@ -15,7 +15,7 @@ const Donation = () => {
 
   const onFinish = (values) => {
     // Simulate invoice generation
-    setInvoice("LN-INVOICE-1234567890ABCDEF");
+    setInvoice("lnbcrt5u1pn5pk3spp5rckd5q436ke0tx2vzv60kyy23gg9wjnuupvhsw5dxnwarwmq6f7qdqqcqzzsxqyz5vqsp5s0ufxmj997cvkulhal8a2ukery9jgj52tjwucqzcl0parqem6eyq9qxpqysgqwrdnc50qnj8p7j7xw9t8wh9fsvpth3rfrga7uv7y2skzqte3v6ephu56ykfkwp3chrgwzc4u2a4dnaat2ccpwkfv9hxq2d920sf54ecqastclq");
     message.success("Invoice generated. Copy and paste it into your wallet to make the payment.");
   };
 
@@ -57,7 +57,7 @@ const Donation = () => {
               name="amount"
               rules={[{ required: true, message: "Please enter the donation amount" }]}
             >
-              <Input type="number" placeholder="e.g., 0.01" />
+              <Input type="number" placeholder="e.g., 100" />
             </Form.Item>
 
             <Form.Item
@@ -115,7 +115,7 @@ const Donation = () => {
                   <Paragraph strong>Your payment has been confirmed!</Paragraph>
                   <Button
                     type="link"
-                    onClick={() => navigate("/transaction")}
+                    onClick={() => navigate("/transaction-history")}
                     style={{ color: "#d4f674" }}
                   >
                     View Transaction
