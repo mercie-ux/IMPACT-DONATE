@@ -1,7 +1,7 @@
 # IMPACT-DONATE
 Introduction
 
-ImpactDonate is a platform that leverages Bitcoin and the Lightning Network (LND) to facilitate fast and effective transactions for charitable organizations. Our mission is to make donations seamless, transparent, and secure, helping to maximize the impact of every contribution.
+ImpactDonate is a platform that leverages Bitcoin and the Lightning Network ⚡(LND) to facilitate fast and effective transactions for charitable organizations. Our mission is to make donations seamless, transparent, and secure, helping to maximize the impact of every contribution.
 
 Features
 
