@@ -77,7 +77,7 @@ function Home() {
                         <Col xs={24} md={12}>
                             <Image
                                 width={240}
-                                src="src/assets/home-page-pic.png"
+                                src="/home-page-pic.png"
                                 alt="African Women Developers"
                                 preview={false}
                                 style={{

@@ -12,7 +12,7 @@ const charities = [
     amountNeeded: 1000000, // Amount in sats
     amountContributed: 250000, // Dummy contribution value
     description: "A groundbreaking AI project aiming to make education accessible for all.",
-    image: "src/assets/img3.jpg",
+    image: "/img3.jpg",
   },
   {
     id: 2,
@@ -20,7 +20,7 @@ const charities = [
     amountNeeded: 500000, // Amount in sats
     amountContributed: 100000, // Dummy contribution value
     description: "A decentralized platform providing secure storage for developers.",
-    image: "src/assets/img5.jpeg",
+    image: "/img5.jpeg",
   },
   {
     id: 3,
@@ -28,7 +28,7 @@ const charities = [
     amountNeeded: 2000000, // Amount in sats
     amountContributed: 1500000, // Dummy contribution value
     description: "Revolutionizing healthcare with blockchain technology for better transparency and security.",
-    image: "src/assets/img8.jpg",
+    image: "/img8.jpg",
   },
 ];
 
