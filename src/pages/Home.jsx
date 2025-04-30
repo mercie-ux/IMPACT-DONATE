@@ -81,7 +81,7 @@ function Home() {
                                 alt="African Women Developers"
                                 preview={false}
                                 style={{
-                                    borderRadius: "8px",
+                                    borderRadius: "15px",
                                     boxShadow: "0 4px 12px rgba(0, 0, 0, 0.2)",
                                     border: "4px solid #64B687",
                                 }}

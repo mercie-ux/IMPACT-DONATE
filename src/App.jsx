@@ -4,7 +4,7 @@ import Home from "./pages/Home";
 import Charities from "./pages/Charities";
 import Donation from "./pages/Donation";
 import TransactionHistory from "./pages/TransactionHistory";
-import Layout from "./components/Layout"; // Import your layout component
+import Layout from "./components/Layout";
 
 function App() {
   const [alias, setAlias] = useState("");

@@ -25,19 +25,86 @@ const Layout = () => {
 
   return (
     <AntdLayout style={{ minHeight: "100vh" }}>
+      {/* Media Queries for Responsiveness */}
+      <style>
+        {`
+          /* Mobile Devices (up to 767px) */
+          @media (max-width: 767px) {
+            .responsive-header {
+              flex-direction: column !important;
+              padding: 0 15px !important;
+              height: auto !important;
+              line-height: normal !important;
+            }
+            .responsive-header .logo-title {
+              margin-bottom: 10px;
+              justify-content: center;
+            }
+            .responsive-header .logo-title img {
+              width: 50px !important;
+              height: 50px !important;
+              margin-right: 10px !important;
+            }
+            .responsive-header .logo-title h1 {
+              font-size: 18px !important;
+            }
+            .responsive-menu {
+              flex: none !important;
+              width: 100% !important;
+              justify-content: center !important;
+            }
+            .responsive-menu .ant-menu-item {
+              padding: 6px 12px !important;
+              font-size: 14px !important;
+              text-align: center;
+            }
+          }
+
+          /* Tablet Devices (768px to 1023px) */
+          @media (min-width: 768px) and (max-width: 1023px) {
+            .responsive-header {
+              padding: 0 20px !important;
+            }
+            .responsive-header .logo-title img {
+              width: 60px !important;
+              height: 60px !important;
+              margin-right: 12px !important;
+            }
+            .responsive-header .logo-title h1 {
+              font-size: 20px !important;
+            }
+            .responsive-menu .ant-menu-item {
+              padding: 6px 14px !important;
+              font-size: 15px !important;
+            }
+          }
+
+          /* Desktop Devices (1024px and above) */
+          @media (min-width: 1024px) {
+            .responsive-header {
+              padding: 0 30px !important;
+            }
+            .responsive-menu .ant-menu-item {
+              padding: 8px 16px !important;
+              font-size: 16px !important;
+            }
+          }
+        `}
+      </style>
+
       {/* Header Section */}
       <Header
+        className="responsive-header"
         style={{
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
           backgroundColor: "#002B36",
-          padding: "0 30px",
           boxShadow: "0px 2px 8px rgba(0, 0, 0, 0.1)",
         }}
       >
         {/* Logo and Title Section */}
-        <div style={{ display: "flex", alignItems: "center" }}>
+        <div className="logo-title" style={{ display: "flex", alignItems: "center" }}>
           <img
             src="/src/assets/impact-donate-logo.png"
             alt="Logo"
@@ -66,6 +133,7 @@ const Layout = () => {
 
         {/* Navigation Menu */}
         <Menu
+          className="responsive-menu"
           onClick={handleMenuClick}
           theme="dark"
           mode="horizontal"
@@ -74,7 +142,6 @@ const Layout = () => {
             flex: 1,
             justifyContent: "flex-end",
             fontWeight: "600",
-            fontSize: "16px",
             background: "transparent",
             borderBottom: "none",
           }}
